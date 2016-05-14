@@ -2,7 +2,7 @@
 const exec = require('child_process').exec
     , fs = require('fs')
     , cmdGetTrainDelayInfo = 'curl https://rti-giken.jp/fhc/api/train_tetsudo/delay.json' 
-    , lineMaster = JSON.parse(fs.readFileSync('targetLineInfo.json', 'utf8'))
+    , lineMaster = JSON.parse(fs.readFileSync(__dirname + '/targetLineInfo.json', 'utf8'))
     ;
 
 exec(cmdGetTrainDelayInfo,
