@@ -8,12 +8,12 @@ const exec = require('child_process').exec
 exec(cmdGetTrainDelayInfo,
   (err, stdout, stderr) => {
     if (err) {
-      writeLog('errLog.txt', err);
+      writeLog('err.log', err);
       return;
     }
 
-    writeLog('stdoutLog.txt', stdout);
-    writeLog('stderrLog.txt', stderr);
+    writeLog('stdout.log', stdout);
+    writeLog('stderr.log', stderr);
 
     const delayTrainInfo = JSON.parse(stdout);
     delayTrainInfo.forEach((infoRow) => {
@@ -34,12 +34,12 @@ function postChatWork(name, link, id) {
   exec(cmdPostChatWork,
     function (err, stdout, stderr) {
       if (err){
-        writeLog('errLog.txt', err);
+        writeLog('err.log', err);
         return;
       }
 
-      writeLog('stdoutLog.txt', stdout);
-      writeLog('stderrLog.txt', stderr);
+      writeLog('stdout.log', stdout);
+      writeLog('stderr.log', stderr);
     }
   );
 };
