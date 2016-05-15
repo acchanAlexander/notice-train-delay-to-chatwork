@@ -1,0 +1,5 @@
+*.swp
+err.log
+stdout.log
+stderr.log
+targetTrainInfo.json
