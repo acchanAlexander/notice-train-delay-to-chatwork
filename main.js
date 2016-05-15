@@ -2,7 +2,7 @@
 const exec = require('child_process').exec
     , fs = require('fs')
     , cmdGetTrainDelayInfo = 'curl https://rti-giken.jp/fhc/api/train_tetsudo/delay.json' 
-    , lineMaster = JSON.parse(fs.readFileSync(__dirname + '/targetLineInfo.json', 'utf8'))
+    , targetTrainInfo = JSON.parse(fs.readFileSync(__dirname + '/targetTrainInfo.json', 'utf8'))
     ;
 
 exec(cmdGetTrainDelayInfo,
@@ -16,10 +16,10 @@ exec(cmdGetTrainDelayInfo,
     writeLog('stderr.log', stderr);
 
     const delayTrainInfo = JSON.parse(stdout);
-    delayTrainInfo.forEach((infoRow) => {
-      lineMaster.forEach((masterRow) => {
-        if (infoRow.name === masterRow.name) {
-          postChatWork(masterRow.name, masterRow.link, masterRow.roomId);
+    delayTrainInfo.forEach((delayRow) => {
+      targetTrainInfo.forEach((targetRow) => {
+        if (delayRow.name === targetRow.name) {
+          postChatWork(targetRow.name, targetRow.link, targetRow.roomId);
         }
       });
     });
