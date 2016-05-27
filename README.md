@@ -19,8 +19,8 @@ roomIdについては、ブラウザでルームを開きURL末尾の #!ridxxxxx
 
 
 ## 実行方法
-環境変数にチャットワークのAPIキーを登録してください
-キー名は CHATWORK_TOKEN にしてください
+環境変数にチャットワークのAPIキーを登録してください  
+キー名は CHATWORK_TOKEN にしてください  
 
 実行は  
 `node main.js`  
