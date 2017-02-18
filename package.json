@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/acchanAlexander/notice-train-delay-to-chatwork/issues"
   },
-  "homepage": "https://github.com/acchanAlexander/notice-train-delay-to-chatwork#readme"
+  "homepage": "https://github.com/acchanAlexander/notice-train-delay-to-chatwork#readme",
+  "dependencies": {
+    "chatwork-client": "^1.0.4"
+  }
 }
