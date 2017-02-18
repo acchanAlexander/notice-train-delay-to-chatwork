@@ -1,5 +1,3 @@
 *.swp
-err.log
-stdout.log
-stderr.log
+*.log
 targetTrainInfo.json
