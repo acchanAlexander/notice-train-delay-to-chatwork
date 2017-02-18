@@ -27,21 +27,20 @@ exec(cmdGetTrainDelayInfo,
 );
 
 function postChatWork(name, link, id) {
-  const msg = name + 'に遅延が出てます。詳しくは詳細情報を確認してください。\n' + link
-      , cmdPostChatWork = 'curl -X POST -H "X-ChatWorkToken: ' + process.env.CHATWORK_TOKEN + '" -d "body=' + msg + '" "https://api.chatwork.com/v1/rooms/' + id + '/messages"'
-      ;
+  const chatwork = require('chatwork-client');
  
-  exec(cmdPostChatWork,
-    function (err, stdout, stderr) {
-      if (err){
-        writeLog('err.log', err);
-        return;
-      }
+  const chatworkParams = {
+        chatworkToken: process.env.CHATWORK_TOKEN,
+        roomId: id,
+        msg: name + 'に遅延が出てます。詳しくは詳細情報を確認してください。\n' + link
+      };
 
-      writeLog('stdout.log', stdout);
-      writeLog('stderr.log', stderr);
-    }
-  );
+  chatwork.init(chatworkParams);
+  chatwork.postRoomMessages()
+    .then()
+    .catch((err) => {
+      writeLog('err.log', err);
+    });
 };
 
 function writeLog(filename, data) {
