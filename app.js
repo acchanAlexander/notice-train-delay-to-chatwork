@@ -1,30 +1,22 @@
 'use strict'
-const exec = require('child_process').exec
-    , fs = require('fs')
-    , cmdGetTrainDelayInfo = 'curl https://rti-giken.jp/fhc/api/train_tetsudo/delay.json' 
+const fs = require('fs')
+    , trainDelayInfo = require('./train-delay')
     , targetTrainInfo = JSON.parse(fs.readFileSync(__dirname + '/targetTrainInfo.json', 'utf8'))
     ;
 
-exec(cmdGetTrainDelayInfo,
-  (err, stdout, stderr) => {
-    if (err) {
-      writeLog('err.log', err);
-      return;
-    }
-
-    writeLog('stdout.log', stdout);
-    writeLog('stderr.log', stderr);
-
-    const delayTrainInfo = JSON.parse(stdout);
-    delayTrainInfo.forEach((delayRow) => {
+trainDelayInfo.get()
+  .then((data) => {
+    data.forEach((delayRow) => {
       targetTrainInfo.forEach((targetRow) => {
         if (delayRow.name === targetRow.name) {
           postChatWork(targetRow.name, targetRow.link, targetRow.roomId);
         }
       });
     });
-  }
-);
+  })
+  .catch((data) => {
+    writeLog('err.log', err);
+  });
 
 function postChatWork(name, link, id) {
   const chatwork = require('chatwork-client');
