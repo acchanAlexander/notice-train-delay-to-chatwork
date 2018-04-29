@@ -4,7 +4,10 @@
 nodeJsで書いているので、実行にはnodeJsをインストールする必要があります。
 
 # 使い方
-githubからcloneしたのち targetTrainInfo.json に、通知したい路線についての情報を記述します。
+1. node.js, npm のインストール（インストール方法については、下記の「nodeJsのインストールについて」を参考にしてください）
+2. このレポジトリをclone
+3. このレポジトリのトップレベルで `npm install` とコマンドを打ってください
+4. targetTrainInfo.json に、通知したい路線についての情報を記述します。（記述する情報については下記の「targetTrainInfo.jsonに記載する項目について」を参考にしてください）
 ## targetTrainInfo.jsonに記載する項目について
 ### `name`
 路線の名前。  
