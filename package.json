@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/acchanAlexander/notice-train-delay-to-chatwork#readme",
   "dependencies": {
-    "chatwork-client": "^1.0.4",
+    "chatwork-client": "^1.0.11",
     "request": "^2.79.0"
   }
 }
