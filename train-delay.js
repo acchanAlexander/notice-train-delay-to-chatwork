@@ -5,7 +5,7 @@ const trainDelayInfo = {
 
   get: () => {
     const options = {
-      uri: 'https://rti-giken.jp/fhc/api/train_tetsudo/delay.json',
+      uri: 'https://tetsudo.rti-giken.jp/free/delay.json',
       json: true
     };
 
